@@ -1,8 +1,11 @@
-@font-face {
+@font-face{src:url(나눔고딕.ttf)}html{font-family:"나눔고딕",sans-serif;width:auto;height:auto}body{background:rgba(0,0,0,.9);-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;width:auto;height:auto}h1{font-size:50px;font-weight:700;text-align:center;color:#fff;margin-top:100px;pointer-events:none}.empty,div#how,h1#title,h3#subTitle,ul li#instruction,ul li#quizStart{display:none}ul#firstChoice{font-size:20px;text-align:center;color:#fff;margin-top:200px}div#how ol li,ul li#instruction,ul li#quizStart{padding:10px;margin:10px;cursor:grabbing}li:hover{background:rgba(255,255,255,.2)}li:active{background:rgba(255,255,255,.4)}h1#title{font-size:80px;text-align:center;margin-top:80px;pointer-events:none}h3#subTitle{font-size:40px;text-align:center;color:#fff;pointer-events:none}div#how ol li{font-size:20px;color:#fff;text-align:center;pointer-events:none}#fieldArea{display:none;margin:10px;padding:10px;color:#fff}#exampleCell,#question{display:none;margin:10px;padding:10px;color:#fff;font-size:25px}#question{letter-spacing:5px}#answerList,#answerList2,#answerList3,#answerList4,#answerList5{width:300px;margin:0}#correct{display:none;margin:10px;padding:10px;color:#fff;font-size:25px;text-align:center}#wrong{display:none;margin:10px 10px 10px 850px;padding:10px;color:#fff;font-size:16px}#fix{width:300px}#answerChoice,#grid,#imageBox,#oxChoice,#playList{text-align:center}#grid #answer,#grid #consequence,#grid #showObj,#grid #showOx,#grid #showSubj,#grid #youtubeButt,#playList div{background:rgba(255,255,255,1);color:rgba(0,0,0,.9);border-radius:10px;font-size:20px;text-align:center;display:none;cursor:grabbing;width:180px;padding:10px;margin:5px}#answerChoice div:hover,#grid #answer:hover,#grid #consequence:hover,#grid #next:hover,#grid #showObj:hover,#grid #showOx:hover,#grid #showSubj:hover,#grid #youtubeButt:hover,#oxChoice div:hover,#playList div:hover{background:rgba(255,255,255,.5)}#answerChoice div:active,#grid #answer:active,#grid #consequence:active,#grid #next:active,#grid #showObj:active,#grid #showOx:active,#grid #showSubj:active,#grid #youtubeButt:active,#oxChoice div:active,#playList div:active{background:rgba(255,255,255,.2)}#grid #next{background:rgba(255,255,255,1);color:rgba(0,0,0,.9);border-radius:10px;font-size:20px;text-align:center;display:none;cursor:grabbing;width:400px;padding:10px;margin:5px}#subjective{display:none;margin-top:10px;margin-bottom:10px;text-align:center;font-size:30px;width:auto;height:60px}#subjAlign{text-align:center;width:auto}#answerChoice div,#oxChoice div{background:rgba(255,255,255,1);color:rgba(0,0,0,.9);font-size:20px;text-align:center;display:none;cursor:grabbing;width:auto;padding:10px;margin:5px}#message{position:relative;display:none;font-size:100px;text-align:center;color:#fff}#storageFrame{display:none;color:#fff;text-align:right;margin:10px}#showObj span,#showOx span,#showSubj span{position:relative;font-size:12px}#answers{display:none;color:#fff;font-size:30px;text-align:center;padding:10px;margin:10px}#complete,#scoreA,#scoreB,#sum{display:none;color:#fff;font-size:50px;text-align:center;padding:10px;margin:10px}#firstListen,#image,#secondListen,#thirdListen{display:none}#audioGroup{display:flex;justify-content:center;align-items:center;width:auto;height:auto}#showAnswer{font-size:30px;color:#fff}#iframeBox{position:relative;display:grid;grid-template-columns:1fr 1fr;width:auto;height:auto}#secYoutube,#youtube{width:925px;height:525px}@media(max-width:1280px){h1{font-size:25px;margin-top:50px}h2#fieldArea{font-size:12px}ul#firstChoice{font-size:10px;margin-top:100px}div#how ol li,ul li#instruction,ul li#quizStart{padding:5px;margin:5px}h1#title{font-size:40px;margin-top:40px}h3#subTitle{font-size:20px}div#how ol li{font-size:10px}#fieldArea{margin:5px;padding:5px}#correct,#exampleCell,#question{margin:5px;padding:5px;font-size:12px}#question{letter-spacing:2.5px}#answerList,#answerList2,#answerList3,#answerList4,#answerList5,#fix{width:150px}#wrong{margin:5px 5px 5px 425px;padding:5px;font-size:8px}#grid #answer,#grid #consequence,#grid #showObj,#grid #showOx,#grid #showSubj,#grid #youtubeButt,#playList div{border-radius:5px;font-size:10px;width:90px;padding:5px;margin:2.5px}#grid #next{border-radius:5px;font-size:10px;width:200px;padding:5px;margin:2.5px}#subjective{margin-top:5px;margin-bottom:5px;font-size:15px;width:auto;height:30px}#answerChoice div,#oxChoice div{font-size:10px;width:auto;padding:5px;margin:2.5px}#message{font-size:50px}#storageFrame{font-size:12px;margin:5px}#showObj span,#showOx span,#showSubj span{font-size:6px}#answers{font-size:15px;padding:5px;margin:5px}#complete,#scoreA,#scoreB,#sum{font-size:25px;padding:5px;margin:5px}audio{width:200px;height:27px}#showAnswer{font-size:15px}#secYoutube,#youtube{width:462px;height:262px}#image{width:50%;height:50%}}
+/* @font-face {
   src: url(나눔고딕.ttf);
 }
 html {
   font-family: "나눔고딕", sans-serif;
+  width: auto;
+  height: auto;
 }
 body {
   background: rgba(0, 0, 0, .9);
@@ -10,6 +13,8 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  width: auto;
+  height: auto;
 }
 h1 {
   font-size: 50px;
@@ -400,4 +405,4 @@ div#how ol li {
     width: 50%;
     height: 50%;
   }
-}
+} */

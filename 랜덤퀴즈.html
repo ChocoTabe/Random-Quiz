@@ -1,4 +1,306 @@
 <!DOCTYPE html>
+
+<html dir="ltr" lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+
+  <title>랜덤퀴즈!</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+  </script>
+  <script src="jquery-3.4.1.min.js">
+  </script>
+  <script src="%EB%AC%B8%EC%A0%9C%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0.js?after">
+  </script>
+  <script src="%EB%9E%9C%EB%8D%A4%EB%AC%B8%EC%A0%9C%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8.js?after">
+  </script>
+  <link href="랜덤퀴즈.css" rel="stylesheet">
+</head>
+
+<body>
+  <h1 id="title">어떤 문제가 나와도 과연 맞출 수 있을까?</h1>
+
+
+  <h3 id="subTitle">아는대로 맞춰라! Random Quiz!</h3>
+
+
+  <ul id="firstChoice">
+    <li id="quizStart">문제풀기</li>
+
+
+    <li id="instruction">설명</li>
+  </ul>
+
+
+  <div id="how">
+    <ol type="I">
+      <li>분야는 랜덤입니다.(음악장르, 과학(물지), 프로그래밍(웹), 영상 기술(애펙), 씹덕(밀리마스/밀리시타 노래 듣고 제목 맞추기)) - 출제자가 문과계열에 약하여 언어, 사회, 지리 등등에 관한 문제는 없습니답;;</li>
+
+
+      <li>난이도 하부터 시작? 그딴 거 없습니다. 어~ 랜덤이야~</li>
+
+
+      <li>그림/영상/오디오를 제공합니다. 이 요소들은 때때로 힌트가 될 수 있으니 문제의 형식에 맞게 잘 활용하여 푸시기 바랍니다.</li>
+
+
+      <li>문제 유형에는 객관식, 주관식, OX퀴즈가 있습니다. 객관식이면 무조건 객관식 답만 선택해야 합니다.</li>
+
+
+      <li>주관식 잘 푸는 꿀팁 : 문제에 답이 대놓고 적혀있음.</li>
+
+
+      <li>플레이 중 결과를 누르면 맞춘 수, 틀린 수, 지금까지 푼 문제 수가 나오며 플레이가 종료됩니다.</li>
+
+
+      <li>저장 기능이 없으므로 페이지를 리로드하시면 초기화가 됩니다.</li>
+
+
+      <li>코딩 초보라 최적화가 똥입니다. 버그도 엄청 자주 발생합니다... 죄송합니다ㅠ</li>
+
+
+      <li>* 총 몇 문제인지는 알려드리지 않습니다.</li>
+
+
+      <li>* 문제 제작에 사용된 자료, 정보들은 70%가 인터넷, 10%가 뇌피셜, 20%가 책으로 이루어져 있습니다.</li>
+
+
+      <li>Made by 쪼꼬릿머거(Jjoggoritmurger). 2020.01.24 ~ 2020.02.11 완성판</li>
+    </ol>
+  </div>
+
+
+  <h2 id="fieldArea">분야 : <span id='field'></span></h2>
+
+
+  <div id="question">
+  </div>
+
+
+  <div id="exampleCell">
+    예시 : <span id="example"></span>
+  </div>
+
+
+  <div class="empty">
+  </div>
+
+
+  <div id="iframeBox">
+    <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen frameborder="0" id="youtube" name="youtube"></iframe> <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen frameborder="0" id="secYoutube" name="secYoutube"></iframe>
+  </div>
+
+
+  <div id="imageBox"><img id="image">
+  </div>
+  <span class="empty2"></span> <span class="empty"></span>
+
+  <div id="audioGroup">
+    <audio controls="" id="firstListen"></audio> <audio controls="" id="secondListen"></audio> <audio controls="" id="thirdListen"></audio>
+  </div>
+
+
+  <div id="storageFrame">
+    선택한 답 : <span id="storage"></span>
+  </div>
+
+
+  <div id="showAnswer">
+    <div id="a">
+    </div>
+
+
+    <div id="b">
+    </div>
+
+
+    <div id="c">
+    </div>
+  </div>
+
+
+  <div id="wrong">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;아니지롱~<br>
+    ( ^~^ ).&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.( ^~^ )<br>
+    &nbsp;( ^~^ ).&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.( ^~^ )<br>
+    &nbsp;&nbsp;( ^~^ ).&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.( ^~^ )<br>
+    &nbsp;&nbsp;&nbsp;( ^~^ ).&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.( ^~^ )<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;( ^~^ ).&nbsp;&nbsp;&nbsp;&nbsp;.( ^~^ )<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;( ^~^ ).&nbsp;&nbsp;.( ^~^ )<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;( ^~^ )..( ^~^ )<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;( ^~^ )( ^~^ )<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;( ^~^ )^~^ )<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;( ^~^ )~^)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;( ^~^ )^)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;( ^~^ ))<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;( ^~^ )<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;( ( ^~^ )<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;( ^~^ )^ )<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;( ^~^ )~^)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;( ^~^ )^~^ )<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;( ^~^ )( ^~^ )<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;( ^~^ )..( ^~^ )<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;( ^~^ ).&nbsp;&nbsp;.( ^~^ )<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;( ^~^ ).&nbsp;&nbsp;&nbsp;&nbsp;.( ^~^ )<br>
+    &nbsp;&nbsp;&nbsp;( ^~^ ).&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.( ^~^ )<br>
+    &nbsp;&nbsp;( ^~^ ).&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.( ^~^ )<br>
+    &nbsp;( ^~^ ).&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.( ^~^ )<br>
+    ( ^~^ ).&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.( ^~^ )<br>
+  </div>
+
+
+  <div id="answerChoice">
+    <div id="answerList">
+      1. <span id="objAnsList"></span>
+    </div>
+
+
+    <div id="answerList2">
+      2. <span id="objAnsList2"></span>
+    </div>
+
+
+    <div id="answerList3">
+      3. <span id="objAnsList3"></span>
+    </div>
+
+
+    <div id="answerList4">
+      4. <span id="objAnsList4"></span>
+    </div>
+
+
+    <div id="answerList5">
+      5. <span id="objAnsList5"></span>
+    </div>
+  </div>
+
+
+  <div id="subjAlign">
+    <input id="subjective" placeholder="주관식 전용" type="text">
+  </div>
+
+
+  <div id="oxChoice">
+    <div id="O">
+      O
+    </div>
+
+
+    <div id="X">
+      X
+    </div>
+  </div>
+
+
+  <div id="correct">
+    즈엉~~답!!!
+  </div>
+
+
+  <div id='answers'>
+    <div id="objAnswerArea">
+      답 : <span id="objAnswer"></span>
+    </div>
+
+
+    <div id="subjAnswerArea">
+      답 : <span id="subjAnswer"></span>
+    </div>
+
+
+    <div id="oxQAnswerArea">
+      답 : <span id="oxQAnswer"></span>
+    </div>
+  </div>
+
+
+  <div id="playList">
+    <div id="play1">
+      (씹)1초 도입부 듣기
+    </div>
+
+
+    <div id="play2">
+      (씹)1초 후렴구 듣기
+    </div>
+
+
+    <div id="play3">
+      (씹)후렴구 듣기
+    </div>
+
+
+    <div id="showImage">
+      (씹)일러스트 보기
+    </div>
+  </div>
+
+
+  <div id="grid">
+    <div id="consequence">
+      결과
+    </div>
+
+
+    <div id="youtubeButt">
+      (음악)유튜브 힌트
+    </div>
+
+
+    <div id="answer">
+      정답보기
+    </div>
+
+
+    <div id="next">
+      정답 확인/다음
+    </div>
+
+
+    <div id="showObj">
+      객관식 보임/숨김
+    </div>
+
+
+    <div id="showSubj">
+      주관식 보임/숨김
+    </div>
+
+
+    <div id="showOx">
+      ox 보임/숨김
+    </div>
+  </div>
+
+
+  <div id="message">
+    정답을 입력해 주세요!!
+  </div>
+
+
+  <div id="consequenceA">
+    <div id="scoreA">
+    </div>
+
+
+    <div id="scoreB">
+    </div>
+
+
+    <div id="sum">
+    </div>
+
+
+    <div id="complete">
+      수고하셨습니다! 다시 시작하시려면 새로고침을 해 주세요!
+    </div>
+  </div>
+  <script>
+      loadScript();
+  </script>
+</body>
+</html>
+<!-- <!DOCTYPE html>
 <html lang="ko" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -7,7 +309,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="jquery-3.4.1.min.js"></script>
     <script src="문제불러오기.js?after"></script>
-    <script src="랜덤문제스크립트.js"></script>
+    <script src="랜덤문제스크립트.js?after"></script>
     <link rel="stylesheet" href="랜덤퀴즈.css">
   </head>
   <body>
@@ -131,4 +433,4 @@
       loadScript();
     </script>
   </body>
-</html>
+</html> -->
